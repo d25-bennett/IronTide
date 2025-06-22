@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     Vector3 velocity;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+    float playerSpeed;
 
     [Header("Grounded stuff")]
     public Transform groundCheck;
@@ -92,6 +93,14 @@ public class Player : MonoBehaviour
                 Vector3 movDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
                 controller.Move(movDir.normalized * moveSpeed * Time.deltaTime);
             }
+            // Moves the player
+            //controller.Move(movDir.normalized * moveSpeed * Time.deltaTime);
+            //Debug.Log($"Direction: {movDir.normalized}, Speed {moveSpeed}");    //IZAAK
+            playerSpeed = moveSpeed;                                            //IZAAK
+        }
+        else
+        {
+            playerSpeed = 0f;
         }
         
 
@@ -117,6 +126,10 @@ public class Player : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    public float GetGroundSpeed() {                                             //IZAAK
+        return playerSpeed;
     }
 }
 
