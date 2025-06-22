@@ -24,7 +24,8 @@ public class Player : MonoBehaviour
     public float jumpHeight = 3f;
     Vector3 velocity;
     public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity; 
+    float turnSmoothVelocity;
+    float playerSpeed;
 
     [Header("Grounded stuff")]
     public Transform groundCheck;
@@ -65,6 +66,12 @@ public class Player : MonoBehaviour
 
             // Moves the player
             controller.Move(movDir.normalized * moveSpeed * Time.deltaTime);
+            //Debug.Log($"Direction: {movDir.normalized}, Speed {moveSpeed}");    //IZAAK
+            playerSpeed = moveSpeed;                                            //IZAAK
+        }
+        else
+        {
+            playerSpeed = 0f;
         }
 
         // Checks if the player is grounded using a simple empty GO 
@@ -87,5 +94,8 @@ public class Player : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    public float GetGroundSpeed() {                                             //IZAAK
+        return playerSpeed;
+    }
 
 }
