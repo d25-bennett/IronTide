@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         pInputSys = GetComponent<PlayerInputSystem>();
+        //if (cam == null ) { cam = FindAnyObjectByType }
     }
 
     // Update is called once per frame

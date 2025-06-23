@@ -704,15 +704,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  shootAction:
-    m_Name: Shoot
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 7a7d40c2-1244-486f-8386-94a30849b587
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
   strafeAction:
     m_Name: Strafe
     m_Type: 0
@@ -727,6 +718,24 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: c272b693-fe64-4105-b5af-e6697459d849
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  fireLeft:
+    m_Name: Fire Left
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 45652bc5-5301-455e-9d7d-9a342a02459f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  fireRight:
+    m_Name: Fire Right
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b44baabe-4b14-4f6f-a8a6-14468e2b82c2
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []

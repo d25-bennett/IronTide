@@ -13,6 +13,11 @@ public class RangedWeaponData : MonoBehaviour
 
     [HideInInspector] public float velocity; // Takes velocity data from projectile, but hidden from being edited in editor
 
+    public float reloadSpeed;
+    public int ammoCount;
+    bool isReloading;
+
+
     [Tooltip("How long before the next projectile can be fired from the weapons. Uses deltaTime so range is in seconds")]
     [Range(0.1f, 9f)] public float bulletCooldown;
 

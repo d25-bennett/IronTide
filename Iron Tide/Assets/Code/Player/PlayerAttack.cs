@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour
 {
 
-    public InputAction fireLeft;
-    public InputAction fireRight;
+
+    public PlayerInputSystem pInputSys;
      
     public RangedWeaponData weaponLeft;
     public RangedWeaponData weaponRight;
@@ -15,11 +15,13 @@ public class PlayerAttack : MonoBehaviour
     public float cooldownRight;
     public float cooldownLeft;
 
+    bool firing;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        fireLeft = InputSystem.actions.FindAction("Player/FireLeft");
-        fireRight = InputSystem.actions.FindAction("Player/FireRight");
+
+        pInputSys = GetComponentInParent<PlayerInputSystem>();
     }
 
     // Update is called once per frame
@@ -27,8 +29,8 @@ public class PlayerAttack : MonoBehaviour
     {
         //ScanForEnemies();
 
-        if (fireRight.IsPressed() && cooldownRight <= 0) { RangedAttack(weaponRight); cooldownRight = weaponRight.bulletCooldown; }
-        if (fireLeft.IsPressed() && cooldownLeft <= 0) { RangedAttack(weaponLeft); cooldownLeft = weaponLeft.bulletCooldown; }
+        if (pInputSys.fireRight.IsPressed() && cooldownRight <= 0) { RangedAttack(weaponRight); cooldownRight = weaponRight.bulletCooldown; }
+        if (pInputSys.fireLeft.IsPressed() && cooldownLeft <= 0) { RangedAttack(weaponLeft); cooldownLeft = weaponLeft.bulletCooldown; }
 
         if (cooldownRight > 0)
             cooldownRight -= Time.deltaTime; 
@@ -54,6 +56,8 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+
+    public bool IsShooting(bool side) { side = firing; return side; }
     void MeleeAttack(GameObject weapon)
     {
         // Use melee attack

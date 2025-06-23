@@ -897,7 +897,7 @@ MonoBehaviour:
   roomCount: 14
   extraEdgePercentage: 0.2
   keepRoomPercentage: 0.5
-  platformPrefab: {fileID: 919132149155446097, guid: 4eb2fabb27fc43044a8ec94c099059f8, type: 3}
+  platformPrefab: {fileID: 7675503170291404632, guid: 11a37926921883e4e9e63372f4818e4f, type: 3}
   playerPrefab: {fileID: 3006290279073076729, guid: 88f046681b28c984d90ae5bab7866c5f, type: 3}
   cameraThirdPerson: {fileID: 943796842}
 --- !u!1 &1857552607

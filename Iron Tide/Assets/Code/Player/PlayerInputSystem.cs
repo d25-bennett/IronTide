@@ -3,12 +3,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputSystem : MonoBehaviour
 {
+    // Player  movement actions
     public InputAction moveAction;
     public InputAction sprintAction;
     public InputAction jumpAction;
-    public InputAction shootAction;
     public InputAction strafeAction;
     public InputAction aimAction;
+
+    // For shooting
+    public InputAction fireLeft;
+    public InputAction fireRight;
 
     private void Start()
     {
@@ -18,5 +22,7 @@ public class PlayerInputSystem : MonoBehaviour
         sprintAction = InputSystem.actions.FindAction("Player/Sprint");
         strafeAction = InputSystem.actions.FindAction("Player/Strafe");
         aimAction = InputSystem.actions.FindAction("Player/Aim");
+        fireLeft = InputSystem.actions.FindAction("Player/FireLeft");
+        fireRight = InputSystem.actions.FindAction("Player/FireRight");
     }
 }
