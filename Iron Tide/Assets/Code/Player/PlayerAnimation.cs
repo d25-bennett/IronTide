@@ -26,7 +26,7 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         float speed = GetComponent<Player>().GetGroundSpeed();
         float time = Time.time;
 
@@ -44,6 +44,15 @@ public class PlayerAnimation : MonoBehaviour
             animator.SetTrigger("To Idle");
             isMoving = false;
             lastStateChangeTime = time;
+        }
+
+        if (GetComponent<Player>().GetIsAiming())
+        {
+            animator.SetTrigger("Aim Right");
+        }
+        else
+        {
+            animator.SetTrigger("Stop Aim Right");
         }
     }
 }
