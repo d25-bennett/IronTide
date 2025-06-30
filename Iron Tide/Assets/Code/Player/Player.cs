@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     [Header("Things to attach to player")]
     public CharacterController controller;
-    public Transform cam;
+    public GameObject cam;
 
     private bool isAiming;
 
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         pInputSys = GetComponent<PlayerInputSystem>();
-        //if (cam == null ) { cam = FindAnyObjectByType }
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
@@ -55,8 +55,8 @@ public class Player : MonoBehaviour
         Vector2 movement = pInputSys.moveAction.ReadValue<Vector2>();
 
         // Use the camera's orientation to move relative to it
-        Vector3 camForward = cam.forward;
-        Vector3 camRight = cam.right;
+        Vector3 camForward = cam.transform.forward;
+        Vector3 camRight = cam.transform.right;
 
         // Flatten y-axis to prevent moving up/down
         //camForward.y = 0;
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
             if (isAiming)
             {
                 // Aiming mode - strafe and rotate toward camera
-                float targetAngle = cam.eulerAngles.y;
+                float targetAngle = cam.transform.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
             else
             {
                 // Character's forward movement is tied to the camera's direction
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 

@@ -21,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
 
-        pInputSys = GetComponentInParent<PlayerInputSystem>();
+        pInputSys = GetComponent<PlayerInputSystem>();
     }
 
     // Update is called once per frame
