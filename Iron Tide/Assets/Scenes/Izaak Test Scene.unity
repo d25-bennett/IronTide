@@ -892,13 +892,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topLeft: {x: -8, y: 4}
-  gridWidth: 80
-  gridHeight: 45
-  roomCount: 14
+  gridWidth: 100
+  gridHeight: 100
+  roomCount: 10
   extraEdgePercentage: 0.2
   keepRoomPercentage: 0.5
   platformPrefab: {fileID: 7675503170291404632, guid: 11a37926921883e4e9e63372f4818e4f, type: 3}
-  playerPrefab: {fileID: 3006290279073076729, guid: 88f046681b28c984d90ae5bab7866c5f, type: 3}
+  playerPrefab: {fileID: 2149306866493737892, guid: af1893596d92c0b4dbe4d5fb447530ff, type: 3}
   cameraThirdPerson: {fileID: 943796842}
 --- !u!1 &1857552607
 GameObject:

@@ -84,13 +84,17 @@ public class RoomManager : MonoBehaviour
 {
     
 
-    public Vector2 topLeft = new Vector2(-8f, 4f);
+    //public Vector2 topLeft = new Vector2(-8f, 4f);
+    public Vector2 topLeft = new Vector2(0f, 0f);
 
-    private int worldWidth = 8 - (-8);
-    private int worldHeight = 4 - (-4);
+    private int prefabSize = 100;
 
-    public int gridWidth = 100;
+    public int gridWidth =  100;
     public int gridHeight = 100;
+
+    private int worldWidth = 1000;//8 - (-8);
+    private int worldHeight = 1000;//4 - (-4);
+
     public int roomCount = 10;
     //public int minRoomSize = 5;
     //public int maxRoomSize = 15;
@@ -118,9 +122,12 @@ public class RoomManager : MonoBehaviour
 
 #if VISUALISE
 
-        cellWidth = worldWidth / (float)gridWidth;
-        cellHeight = worldHeight / (float)gridHeight;
-        
+        cellWidth = prefabSize;// worldWidth / (float)gridWidth;
+        cellHeight = prefabSize;//  worldHeight / (float)gridHeight; //100 is the size of octagon prefab
+
+        worldWidth = gridWidth *  prefabSize;
+        worldHeight = gridHeight * prefabSize;
+
         GameObject lineManager = new GameObject("lineManager");
 #endif
 
@@ -176,7 +183,8 @@ public class RoomManager : MonoBehaviour
 
     //STEP 1 FUNCITONS
 
-    int[,] RoomSizes = { { 4, 4 }, { 6, 6 }, { 10, 10 } };//, { 4, 8 }, { 8, 4 }, { 10, 10 } };
+    //int[,] RoomSizes = { { 4, 4 }, { 6, 6 }, { 10, 10 } };//, { 4, 8 }, { 8, 4 }, { 10, 10 } };
+    int[,] RoomSizes = { { 1, 1 }, { 2, 2 }};//, { 4, 8 }, { 8, 4 }, { 10, 10 } };
 
     Room GenerateRoom()
     {
@@ -590,6 +598,9 @@ public class RoomManager : MonoBehaviour
                 originalScale.y * scaleFactor,            
                 originalScale.z// * scaleFactor
                 );
+
+            Vector3 size = spawnedRoom.GetComponent<MeshRenderer>().bounds.size;
+            Debug.Log("Room size: " + size);
         }
 
 
@@ -603,10 +614,10 @@ public class RoomManager : MonoBehaviour
         if (null != playerPrefab)
         {
             Vector2 worldPos = GridToWorld(rooms.First().GetVector());
-            //Vector3 position = new Vector3(worldPos.x * 3, 100f, worldPos.y * 3);
-            Vector3 position = new Vector3(0, 20, 0);
+            Vector3 position = new Vector3(worldPos.x * 3, 10f, worldPos.y * 3);
+            //Vector3 position = new Vector3(0, 20, 0);
 
-            GameObject spawnedPlayer = Instantiate(playerPrefab, position, Quaternion.Euler(-90f, 0f, 0f));
+            GameObject spawnedPlayer = Instantiate(playerPrefab, position, Quaternion.Euler(0F, 0f, 0f));
 
             if (null != cameraThirdPerson)
             { 

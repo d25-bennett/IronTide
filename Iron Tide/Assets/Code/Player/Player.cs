@@ -82,6 +82,7 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                 controller.Move(moveDirection.normalized * moveSpeed * Time.deltaTime);
+
             }
             else
             {
@@ -131,6 +132,10 @@ public class Player : MonoBehaviour
 
     public float GetGroundSpeed() {                                             //IZAAK
         return playerSpeed;
+    }
+    public bool GetIsAiming()
+    {                                             //IZAAK
+        return isAiming;
     }
 }
 
