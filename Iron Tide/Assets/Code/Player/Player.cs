@@ -36,7 +36,12 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        if ((pInputSys = GetComponent<PlayerInputSystem>()) == null)
+        { 
+            gameObject.AddComponent<PlayerInputSystem>();
+        }
         pInputSys = GetComponent<PlayerInputSystem>();
+
         cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
